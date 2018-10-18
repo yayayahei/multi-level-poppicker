@@ -8,17 +8,23 @@ export var CLASS_ACTION_BACKDROP = 'mui-backdrop-action';
 export var CLASS_ACTIVE = 'mui-active';
 export var CLASS_BOTTOM = 'mui-bottom';
 
-
+var isTouchable, EVENT_START, EVENT_MOVE, EVENT_END;
 if ('ontouchstart' in window) {
-    export var isTouchable = true;
-    export var EVENT_START = 'touchstart';
-    export var EVENT_MOVE = 'touchmove';
-    export var EVENT_END = 'touchend';
+    isTouchable = true;
+    EVENT_START = 'touchstart';
+    EVENT_MOVE = 'touchmove';
+    EVENT_END = 'touchend';
 } else {
-    export var isTouchable = false;
-    export var EVENT_START = 'mousedown';
-    export var EVENT_MOVE = 'mousemove';
-    export var EVENT_END = 'mouseup';
+    isTouchable = false;
+    EVENT_START = 'mousedown';
+    EVENT_MOVE = 'mousemove';
+    EVENT_END = 'mouseup';
 }
+export {
+    isTouchable,
+    EVENT_START,
+    EVENT_MOVE,
+    EVENT_END
+};
 export var EVENT_CANCEL = 'touchcancel';
 export var EVENT_CLICK = 'click';

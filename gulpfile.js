@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var header = require('gulp-header');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
+const webpack = require('webpack-stream');
 
 //var banner = ['/**',
 //	' * <%= pkg.name %> - <%= pkg.description %>',
@@ -38,7 +39,7 @@ gulp.task('clear_picker', function (cb) {
 });
 
 gulp.task('build', 
-// ["clear_picker"], 
+["clear_picker"], 
 function () {
     // gulp.src([
     //     './node_modules/font-awesome/fonts/*'
@@ -62,9 +63,16 @@ function () {
     // gulp.src(["./img/**"])
     //     .pipe(gulp.dest("./dist/img/"));
     //js
-    gulp.src("js/**/*.js").pipe(babel({
+    gulp.src('js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
             presets: ['@babel/env']
-        })).pipe(concat('all.js')).pipe(gulp.dest("./dist/js/"));
+        }))
+        .on('error', console.error.bind(console))
+        .pipe(webpack())
+        .pipe(concat('all.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('default', ["build"]);
