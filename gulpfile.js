@@ -30,39 +30,9 @@ var picker_banner = ['/**',
 
 gulp.task('clear_picker', function (cb) {
     del(['dist/js/*.js', 'dist/css/*.css'], cb);
-
-
-    // del(['dist/js/*.js', 'dist/css/*.css']).then(paths => {
-    // 	console.log('Deleted files and folders:\n', paths.join('\n'));
-    // });
-
 });
 
-gulp.task('build', 
-["clear_picker"], 
-function () {
-    // gulp.src([
-    //     './node_modules/font-awesome/fonts/*'
-    // ])
-    //     .pipe(gulp.dest('./dist/fonts'));
-    // //css
-    // gulp.src([
-    //     "./css/mui.picker.css",
-    //     "./css/mui.poppicker.css",
-    //     "./css/mui.dtpicker.css",
-    //     './node_modules/font-awesome/css/font-awesome.css'
-    // ])
-    //     .pipe(concat("mui.picker.all.css"))
-    //     //.pipe(header(picker_banner))
-    //     .pipe(gulp.dest("./dist/css/"))
-    //     .pipe(minifycss())
-    //     .pipe(rename("mui.picker.min.css"))
-    //     .pipe(header(picker_banner))
-    //     .pipe(gulp.dest("./dist/css/"));
-    // //img
-    // gulp.src(["./img/**"])
-    //     .pipe(gulp.dest("./dist/img/"));
-    //js
+gulp.task('build', ["clear_picker"], function () {
     gulp.src('js/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({

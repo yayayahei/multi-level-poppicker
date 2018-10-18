@@ -1,7 +1,7 @@
 import * as consts from './constants';
 import * as events from './events';
 import * as utils from './util';
-export default createMask = function(callback) {
+export default function(callback) {
     var element = document.createElement('div');
     element.classList.add(consts.CLASS_BACKDROP);
     element.addEventListener(consts.EVENT_MOVE, events.preventDefault);

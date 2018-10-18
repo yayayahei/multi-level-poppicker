@@ -1,3 +1,8 @@
+var initializing = false,
+		fnTest = /xyz/.test(function() {
+			xyz;
+		}) ? /\b_super\b/ : /.*/;
+
 var Class = function () {};
 Class.extend = function (prop) {
     var _super = this.prototype;

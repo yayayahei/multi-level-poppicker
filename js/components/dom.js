@@ -1,4 +1,4 @@
-export default dom = function (str) {
+export default function (str) {
     if (typeof(str) !== 'string') {
         if ((str instanceof Array) || (str[0] && str.length)) {
             return [].slice.call(str);

@@ -419,7 +419,7 @@ var MAX_EXCEED = 30;
         }
     };
 
- export default ulpicker = function (uls,options) {
+ export default function (uls,options) {
             //遍历选择的元素
             uls.each(function (i, element) {
                 if (element.ulpicker) return;
