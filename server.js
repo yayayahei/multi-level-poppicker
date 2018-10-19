@@ -28,6 +28,7 @@ app.use('/manifest.json', nocache, function (request, response) {
 });
 
 // http://expressjs.com/en/starter/static-files.html
+app.use('/test',express.static('test'));
 app.use('/dist',express.static('dist'));
 app.use('/examples',express.static('examples'));
 

@@ -9,29 +9,12 @@ var header = require('gulp-header');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('webpack-stream');
-
-//var banner = ['/**',
-//	' * <%= pkg.name %> - <%= pkg.description %>',
-//	' * @version v<%= pkg.version %>',
-//	' * @link <%= pkg.homepage %>',
-//	' * @license <%= pkg.license %>',
-//	' */',
-//	''
-//].join('\r\n');
-
-var picker_banner = ['/**',
-    '* 选择列表插件',
-    '* varstion 2.0.0',
-    '* by Houfeng',
-    '* Houfeng@DCloud.io',
-    '**/',
-    ''
-].join('\r\n');
+const watch = require('gulp-watch');
+ 
 
 gulp.task('clear_picker', function (cb) {
     del(['dist/js/*.js', 'dist/css/*.css'], cb);
 });
-
 gulp.task('build', ["clear_picker"], function () {
     gulp.src('js/**/*.js')
         .pipe(sourcemaps.init())
@@ -43,6 +26,22 @@ gulp.task('build', ["clear_picker"], function () {
         .pipe(concat('all.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/js'))
+});
+gulp.task('test',function () {
+    return watch(['js/**/*.js','test/src/**/*.js'],function () {
+        gulp.src('test/src/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets:['@babel/env']
+        }))
+        .on('error',console.error.bind(console))
+        .pipe(webpack())
+        .on('error',console.error.bind(console))
+        .pipe(concat('index.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('test/dist'))
+    })
+    
 });
 
 gulp.task('default', ["build"]);

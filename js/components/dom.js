@@ -1,3 +1,4 @@
+
 export default function (str) {
     if (typeof(str) !== 'string') {
         if ((str instanceof Array) || (str[0] && str.length)) {
@@ -6,6 +7,7 @@ export default function (str) {
             return [str];
         }
     }
+    let __create_dom_div__=null;
     if (!__create_dom_div__) {
         __create_dom_div__ = document.createElement('div');
     }

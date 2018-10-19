@@ -420,16 +420,17 @@ var MAX_EXCEED = 30;
     };
 
  export default function (uls,options) {
+     console.log(uls);
             //遍历选择的元素
-            uls.each(function (i, element) {
-                if (element.ulpicker) return;
-                if (options) {
-                    element.ulpicker = new ULPicker(element, options);
-                } else {
-                    var optionsText = element.getAttribute('data-ulpicker-options');
-                    var _options = optionsText ? JSON.parse(optionsText) : {};
-                    element.ulpicker = new ULPicker(element, _options);
-                }
-            });
-            return uls[0] ? uls[0].ulpicker : null;
+            // uls.each(function (i, element) {
+            //     if (element.ulpicker) return;
+            //     if (options) {
+            //         element.ulpicker = new ULPicker(element, options);
+            //     } else {
+            //         var optionsText = element.getAttribute('data-ulpicker-options');
+            //         var _options = optionsText ? JSON.parse(optionsText) : {};
+            //         element.ulpicker = new ULPicker(element, _options);
+            //     }
+            // });
+            // return uls[0] ? uls[0].ulpicker : null;
         };

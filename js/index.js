@@ -33,9 +33,9 @@ var pickerBuffer = '<div class="mui-ulpicker">\
 	</div>';
 
 //定义弹出选择器类
-var MultiLevelPopPicker = {
+class MultiLevelPopPicker {
     //构造函数
-    init: function (options) {
+    constructor(options) {
         var self = this;
         self.options = options || {};
         self.options.panelTitle = self.options.panelTitle || '';
@@ -62,8 +62,8 @@ var MultiLevelPopPicker = {
         self.panel.addEventListener(constants.EVENT_MOVE, function (event) {
             event.preventDefault();
         }, false);
-    },
-    _createPicker: function () {
+    }
+    _createPicker(){
         var self = this;
         var layer = self.options.layer || 1;
         var titleWidthLayer = self.options.titleWidthLayer;
@@ -163,15 +163,16 @@ var MultiLevelPopPicker = {
                 }
             }, false);
         }
-    },
+    }
     //填充数据
-    setData: function (data) {
+    setData(data) {
         var self = this;
         data = data || [];
+        console.log(self.pickers[0]);
         self.pickers[0].setItems(data);
-    },
+    }
     //获取选中的项（数组）
-    getSelectedItems: function () {
+    getSelectedItems() {
         var self = this;
         var items = [];
         for (var i in self.pickers) {
@@ -179,10 +180,9 @@ var MultiLevelPopPicker = {
             items.push(picker.getSelectedItem() || {});
         }
         return items;
-    },
-
+    }
     //显示
-    show: function (callback) {
+    show(callback) {
         var self = this;
         self.callback = callback;
         self.mask.show();
@@ -190,18 +190,17 @@ var MultiLevelPopPicker = {
         document.documentElement.classList.add('poppicker-active-for-page');
         self.panel.classList.add('active');
 
-    },
-
+    }
     //隐藏
-    hide: function () {
+    hide () {
         var self = this;
         if (self.disposed) return;
         self.panel.classList.remove('active');
         self.mask.close();
         document.body.classList.remove('poppicker-active-for-page');
         document.documentElement.classList.remove('poppicker-active-for-page');
-    },
-    dispose: function () {
+    }
+    dispose () {
         var self = this;
         self.hide();
         setTimeout(function () {
