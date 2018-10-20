@@ -9,10 +9,10 @@ fetch('./dist/data.json')
              var city_picker = new MultiLevelPopPicker({
                     panelTitle: '自定义标题',
                     layer: 3,
-                    titleWidthLayer: [20, 20, 55],
+                    titleWidthLayer: [20, 20, 45],
                     defaultTitles: ['省份', '城市', '请选择']
                 });
-                city_picker.setData(myJson);
+                city_picker.setData(myJson.d);
                 
                 document.getElementById('pop').onclick = function (ev) {
                     city_picker.show(function (items) {

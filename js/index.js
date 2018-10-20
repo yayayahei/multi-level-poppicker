@@ -11,6 +11,7 @@ import Class from './components/Class';
 import createMask from './components/createMask';
 import * as constants from './components/constants';
 import ulpicker from './ulpicker';
+
 var panelBuffer = '<div class="mui-poppicker">\
 		<div class="mui-poppicker-header">\
 		    <span class="mui-poppicker-header-text"></span>\
@@ -48,10 +49,11 @@ class MultiLevelPopPicker {
         self.title = self.panel.querySelector('.mui-poppicker-title');
         self.body = self.panel.querySelector('.mui-poppicker-body');
         self.mask = createMask();
-        self.close.addEventListener('tap', function (event) {
+        self.close.addEventListener('click', function (event) {
+            console.log(event);
             self.hide();
         }, false);
-        self.mask[0].addEventListener('tap', function () {
+        self.mask[0].addEventListener('click', function () {
             self.hide();
         }, false);
         self._createPicker();
@@ -87,7 +89,7 @@ class MultiLevelPopPicker {
                 titleElement.classList.add('active');
                 pickerElement.classList.add('active');
             }
-            titleElement.addEventListener('tap', function (event) {
+            titleElement.addEventListener('click', function (event) {
                 var id = Number(this.getAttribute("data-id"));
                 var index = Number(this.getAttribute("data-value"));
                 var prevIndex = this.previousSibling && Number(this.previousSibling.getAttribute("data-value"));

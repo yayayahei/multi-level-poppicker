@@ -31,6 +31,7 @@ app.use('/manifest.json', nocache, function (request, response) {
 app.use('/test',express.static('test'));
 app.use('/dist',express.static('dist'));
 app.use('/examples',express.static('examples'));
+app.use('/css',express.static('css'));
 
 console.log('port',process.env.PORT)
 var listener = app.listen(process.env.PORT, function () {
