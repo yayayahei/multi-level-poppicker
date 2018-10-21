@@ -1,4 +1,4 @@
-import MultiLevelPopPicker from '../../js/index.js'
+import MultiLevelPopPicker from '../../src/index.js'
 fetch('./dist/data.json')
   .then(function(response) {
     return response.json();

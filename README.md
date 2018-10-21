@@ -6,4 +6,4 @@ A multi level cascade popup picker inspired by mui.
 
 # Test
     npm test
-
+then open http://localhost:3333/test
