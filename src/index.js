@@ -32,7 +32,7 @@ var pickerBuffer = '<div class="mui-ulpicker">\
 	</div>';
 
 //定义弹出选择器类
-class MultiLevelPopPicker {
+export default class MultiLevelPopPicker {
     //构造函数
     constructor(options) {
         var self = this;
@@ -214,5 +214,3 @@ class MultiLevelPopPicker {
         }, 300);
     }
 };
-
-export default MultiLevelPopPicker;
