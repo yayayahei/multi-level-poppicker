@@ -4,9 +4,7 @@
   "description": "A multi level cascade popup picker inspired by mui.",
   "main": "src/index.js",
   "dependencies": {
-    "better-scroll": "^1.8.0",
-    "font-awesome": "^4.7.0",
-    "request": "^2.88.0"
+    "better-scroll": "^1.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
