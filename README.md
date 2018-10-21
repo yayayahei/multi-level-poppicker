@@ -1,4 +1,4 @@
 # multi-level-poppicker
 A multi level cascade popup picker inspired by mui.
 
-<img src="example.png" width="200" alt="example">
+<img src="example.png" width="300" alt="example">
