@@ -71,4 +71,4 @@ then build your code to run
 after clone this repo, you can run 
 
     npm test
-then open http://localhost:3333/test, there it is.
+then open http://localhost:3333, there it is.
