@@ -36,8 +36,9 @@
     "test": "node server.js"
   },
   "keywords": [
-    "multi-level",
     "picker",
+    "cascade",
+    "multi-level",
     "poppicker"
   ],
   "author": "yayayahei",
