@@ -16,6 +16,8 @@ gulp.task('clear_picker', function (cb) {
     del(['dist/js/*.js', 'dist/css/*.css'], cb);
 });
 gulp.task('build', ["clear_picker"], function () {
+    gulp.src(["./img/**"])
+    .pipe(gulp.dest("./dist/img/"));
     gulp.src('js/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -29,6 +31,9 @@ gulp.task('build', ["clear_picker"], function () {
 });
 gulp.task('test',function () {
     return watch(['js/**/*.js','test/src/**/*.js'],function () {
+        //img
+        gulp.src(["./img/**"])
+        .pipe(gulp.dest("test/dist/img/"));
         gulp.src('test/src/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({

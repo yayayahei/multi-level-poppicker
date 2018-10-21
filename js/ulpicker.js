@@ -38,7 +38,7 @@ var ULPicker = function (holder, options) {
     self.bscroll = new BScroll(self.holder.querySelector('.wrapper'), {
         bindToWrapper: true,
         // click: true,
-        // tap: true,
+        tap: true,
     });
     self.init();
     self.initInertiaParams();
@@ -122,20 +122,20 @@ ULPicker.prototype.bindEvent = function () {
     var lastAngle = 0;
     var startY = null;
     var isPicking = false;
-    self.holder.addEventListener(constants.EVENT_START, function (event) {
+    // self.holder.addEventListener(constants.EVENT_START, function (event) {
        
-    }, false);
-    self.holder.addEventListener(constants.EVENT_END, function (event) {
+    // }, false);
+    // self.holder.addEventListener(constants.EVENT_END, function (event) {
         
-    }, false);
-    self.holder.addEventListener(constants.EVENT_CANCEL, function (event) {
+    // }, false);
+    // self.holder.addEventListener(constants.EVENT_CANCEL, function (event) {
         
-    }, false);
-    self.holder.addEventListener(constants.EVENT_MOVE, function (event) {
+    // }, false);
+    // self.holder.addEventListener(constants.EVENT_MOVE, function (event) {
         
-    }, false);
+    // }, false);
     console.log('bind tap for ',self.list)
-    self.list.addEventListener('click', function (event) {
+    self.list.addEventListener('tap', function (event) {
         console.log(event);
 
         var elementItem = event.target.tagName === 'LI' ? event.target : event.target.parentElement;

@@ -5,7 +5,7 @@ export default function(callback) {
     var element = document.createElement('div');
     element.classList.add(consts.CLASS_BACKDROP);
     element.addEventListener(consts.EVENT_MOVE, events.preventDefault);
-    element.addEventListener('tap', function() {
+    element.addEventListener('click', function() {
         mask.close();
     });
     var mask = [element];

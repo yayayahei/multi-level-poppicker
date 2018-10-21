@@ -53,17 +53,18 @@ class MultiLevelPopPicker {
             console.log(event);
             self.hide();
         }, false);
-        self.mask[0].addEventListener('click', function () {
+        self.mask[0].addEventListener('click',function(event){
+            console.log(event);
             self.hide();
-        }, false);
+        })
         self._createPicker();
         //防止滚动穿透
-        self.panel.addEventListener(constants.EVENT_START, function (event) {
-            event.preventDefault();
-        }, false);
-        self.panel.addEventListener(constants.EVENT_MOVE, function (event) {
-            event.preventDefault();
-        }, false);
+        // self.panel.addEventListener(constants.EVENT_START, function (event) {
+        //     event.preventDefault();
+        // }, false);
+        // self.panel.addEventListener(constants.EVENT_MOVE, function (event) {
+        //     event.preventDefault();
+        // }, false);
     }
     _createPicker(){
         var self = this;
