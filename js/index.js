@@ -7,9 +7,7 @@
  */
 
 import dom from './components/dom';
-import Class from './components/Class';
 import createMask from './components/createMask';
-import * as constants from './components/constants';
 import ulpicker from './ulpicker';
 
 var panelBuffer = '<div class="mui-poppicker">\

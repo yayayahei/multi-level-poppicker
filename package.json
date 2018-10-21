@@ -2,6 +2,7 @@
   "name": "multi-level-poppicker",
   "version": "1.0.0",
   "description": "A multi level cascade popup picker inspired by mui.",
+  "main": "js/index.js",
   "dependencies": {
     "better-scroll": "^1.8.0",
     "font-awesome": "^4.7.0",

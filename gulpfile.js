@@ -16,8 +16,8 @@ gulp.task('clear_picker', function (cb) {
     del(['dist/js/*.js', 'dist/css/*.css'], cb);
 });
 gulp.task('build', ["clear_picker"], function () {
-    gulp.src(["./img/**"])
-    .pipe(gulp.dest("./dist/img/"));
+    gulp.src(["./css/**"])
+    .pipe(gulp.dest("./dist/css/"));
     gulp.src('js/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -30,10 +30,8 @@ gulp.task('build', ["clear_picker"], function () {
         .pipe(gulp.dest('dist/js'))
 });
 gulp.task('test',function () {
-    return watch(['js/**/*.js','test/src/**/*.js'],function () {
-        //img
-        gulp.src(["./img/**"])
-        .pipe(gulp.dest("test/dist/img/"));
+    gulp.src(["css/**"]).pipe(gulp.dest("test/dist/css/"));
+    return watch(['js/**/*.js','test/src/**/*.js','css/**'],function () {
         gulp.src('test/src/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -44,9 +42,8 @@ gulp.task('test',function () {
         .on('error',console.error.bind(console))
         .pipe(concat('index.js'))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('test/dist'))
+        .pipe(gulp.dest('test/dist'));
     })
-    
 });
 
 gulp.task('default', ["build"]);

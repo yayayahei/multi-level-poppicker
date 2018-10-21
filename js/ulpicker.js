@@ -1,5 +1,3 @@
-import * as constants from './components/constants';
-import * as util from './components/util';
 import * as events from './components/events';
 import BScroll from 'better-scroll'
 /**
