@@ -235,7 +235,7 @@ ULPicker.prototype.getItems = function () {
 
 ULPicker.prototype.getSelectedIndex = function () {
     var self = this;
-    return self.index;
+    return self.index||0;
 };
 
 ULPicker.prototype.setSelectedIndex = function (index, duration, callback) {
