@@ -22,8 +22,8 @@ var deg2rad = function (deg) {
 var platform = navigator.platform.toLowerCase();
 var userAgent = navigator.userAgent.toLowerCase();
 var isIos = (userAgent.indexOf('iphone') > -1 ||
-    userAgent.indexOf('ipad') > -1 ||
-    userAgent.indexOf('ipod') > -1) &&
+        userAgent.indexOf('ipad') > -1 ||
+        userAgent.indexOf('ipod') > -1) &&
     (platform.indexOf('iphone') > -1 ||
         platform.indexOf('ipad') > -1 ||
         platform.indexOf('ipod') > -1);
@@ -121,18 +121,18 @@ ULPicker.prototype.bindEvent = function () {
     var startY = null;
     var isPicking = false;
     // self.holder.addEventListener(constants.EVENT_START, function (event) {
-       
+
     // }, false);
     // self.holder.addEventListener(constants.EVENT_END, function (event) {
-        
+
     // }, false);
     // self.holder.addEventListener(constants.EVENT_CANCEL, function (event) {
-        
+
     // }, false);
     // self.holder.addEventListener(constants.EVENT_MOVE, function (event) {
-        
+
     // }, false);
-    console.log('bind tap for ',self.list)
+    console.log('bind tap for ', self.list)
     self.list.addEventListener('tap', function (event) {
         console.log(event);
 
@@ -186,14 +186,14 @@ ULPicker.prototype.triggerChange = function (force) {
         var index = self.getSelectedIndex();
         // console.log(index);
         var item = self.items[index];
-        // console.log(item);
-        // if ($.trigger && (index != self.lastIndex || force === true)) {
-        if (events.trigger || force === true) {
-            events.trigger(self.holder, 'change', {
-                "index": index,
-                "item": item
-            });
-            //console.log('change:' + index);
+        if (index != -1) {
+            if (events.trigger || force === true) {
+                events.trigger(self.holder, 'change', {
+                    "index": index,
+                    "item": item
+                });
+                //console.log('change:' + index);
+            }
         }
         self.lastIndex = index;
         typeof force === 'function' && force();
@@ -213,8 +213,9 @@ ULPicker.prototype.correctAngle = function (angle) {
 
 ULPicker.prototype.setItems = function (items) {
     var self = this;
-    console.log('items in setItems',items);
+    console.log('items in setItems', items);
     self.items = items || [];
+    self.index = -1;
     var buffer = [];
     self.items.forEach(function (item) {
         if (item !== null && item !== undefined) {
@@ -242,15 +243,6 @@ ULPicker.prototype.setSelectedIndex = function (index, duration, callback) {
     // console.log('setSelectIndex');
     var self = this;
     self.index = index;
-    // console.log(self.index);
-    // self.list.style.webkitTransition = '';
-    // var angle = self.correctAngle(self.itemAngle * index);
-    // if (duration && duration > 0) {
-    //     var distAngle = angle - self.list.angle;
-    //     self.scrollDistAngle(Date.now(), self.list.angle, distAngle, duration);
-    // } else {
-    //     self.setAngle(angle);
-    // }
     self.triggerChange(callback);
 };
 
@@ -284,12 +276,12 @@ export default function (element, options) {
 
     //遍历选择的元素
     if (element.ulpicker) return;
-        if (options) {
-            element.ulpicker = new ULPicker(element, options);
-        } else {
-            var optionsText = element.getAttribute('data-ulpicker-options');
-            var _options = optionsText ? JSON.parse(optionsText) : {};
-            element.ulpicker = new ULPicker(element, _options);
-        }
-    return element?element.ulpicker : null;
+    if (options) {
+        element.ulpicker = new ULPicker(element, options);
+    } else {
+        var optionsText = element.getAttribute('data-ulpicker-options');
+        var _options = optionsText ? JSON.parse(optionsText) : {};
+        element.ulpicker = new ULPicker(element, _options);
+    }
+    return element ? element.ulpicker : null;
 };
