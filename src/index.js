@@ -51,7 +51,7 @@ export default class MultiLevelPopPicker {
             console.log(event);
             self.hide();
         }, false);
-        self.mask[0].addEventListener('click',function(event){
+        self.mask[0].addEventListener('click', function (event) {
             console.log(event);
             self.hide();
         })
@@ -64,7 +64,7 @@ export default class MultiLevelPopPicker {
         //     event.preventDefault();
         // }, false);
     }
-    _createPicker(){
+    _createPicker() {
         var self = this;
         var layer = self.options.layer || 1;
         var titleWidthLayer = self.options.titleWidthLayer;
@@ -118,7 +118,7 @@ export default class MultiLevelPopPicker {
             self.titles.push(titleElement);
             self.pickerElements.push(pickerElement);
             self.body.appendChild(pickerElement);
-            var picker =  ulpicker(pickerElement);
+            var picker = ulpicker(pickerElement);
             self.pickers.push(picker);
             pickerElement.addEventListener('change', function (event) {
                 // console.log('change event',event);
@@ -190,10 +190,13 @@ export default class MultiLevelPopPicker {
         document.body.classList.add('poppicker-active-for-page');
         document.documentElement.classList.add('poppicker-active-for-page');
         self.panel.classList.add('active');
-
+        // fix: first time show will not scroll in first panel
+        if (self.pickers && self.pickers.length > 0) {
+            self.pickers[0].bscroll.refresh();
+        }
     }
     //隐藏
-    hide () {
+    hide() {
         var self = this;
         if (self.disposed) return;
         self.panel.classList.remove('active');
@@ -201,7 +204,7 @@ export default class MultiLevelPopPicker {
         document.body.classList.remove('poppicker-active-for-page');
         document.documentElement.classList.remove('poppicker-active-for-page');
     }
-    dispose () {
+    dispose() {
         var self = this;
         self.hide();
         setTimeout(function () {
