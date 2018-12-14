@@ -32,7 +32,8 @@
     "webpack-stream": "^5.1.1"
   },
   "scripts": {
-    "build": "gulp;gulp test",
+    "build": "gulp & gulp test",
+    "pretest": "npm run build",
     "test": "node server.js"
   },
   "keywords": [
